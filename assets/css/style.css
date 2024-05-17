@@ -579,3 +579,60 @@ body.nav-active {
 .service-card .btn-text:is(:hover, :focus-visible) {
   opacity: 0.9;
 }
+
+/*-----------------------------------*\
+  #ABOUT
+\*-----------------------------------*/
+
+.about .container {
+  display: grid;
+  gap: 50px;
+}
+
+.about .section-title {
+  margin-block-end: 35px;
+}
+
+.accordion-card .card-title {
+  padding-block-end: 20px;
+}
+
+.accordion-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.accordion-btn ion-icon {
+  font-size: 1.5rem;
+  color: var(--blue-crayola);
+  transition: var(--transition-1);
+}
+
+.accordion-card.expanded .accordion-btn ion-icon {
+  transform: rotate(0.5turn);
+}
+
+.accordion-btn .span {
+  transition: var(--transition-1);
+}
+
+.accordion-btn:is(:hover, :focus-visible) .span,
+.accordion-card.expanded .accordion-btn .span {
+  color: var(--violet-blue-crayola);
+}
+
+.accordion-content {
+  padding-inline-start: 24px;
+  max-height: 0;
+  overflow: hidden;
+  transition: var(--transition-1);
+  transition-property: max-height, padding;
+}
+
+.accordion-card.expanded .accordion-content {
+  max-height: max-content;
+  padding-block-end: 20px;
+  transition: var(--transition-1);
+  transition-property: max-height, padding;
+}

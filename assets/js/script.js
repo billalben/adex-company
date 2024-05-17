@@ -98,3 +98,29 @@ const initSlider = function (currentSlider) {
 };
 
 sliders.forEach((slider) => initSlider(slider));
+
+/**
+ * ACCORDION
+ */
+
+const accordions = document.querySelectorAll("[data-accordion]");
+
+let lastActiveAccordion = accordions[0];
+
+const initAccordion = function (currentAccordion) {
+  const accordionBtn = currentAccordion.querySelector("[data-accordion-btn]");
+
+  const expandAccordion = function () {
+    if (lastActiveAccordion && lastActiveAccordion !== currentAccordion) {
+      lastActiveAccordion.classList.remove("expanded");
+    }
+
+    currentAccordion.classList.toggle("expanded");
+
+    lastActiveAccordion = currentAccordion;
+  };
+
+  accordionBtn.addEventListener("click", expandAccordion);
+};
+
+accordions.forEach((accordion) => initAccordion(accordion));
