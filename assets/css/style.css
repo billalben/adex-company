@@ -840,6 +840,10 @@ body.nav-active {
   font-weight: var(--fw-700);
 }
 
+.copyright-year {
+  display: inline-block;
+}
+
 /*-----------------------------------*\
   #MEDIA QUERIES
 \*-----------------------------------*/

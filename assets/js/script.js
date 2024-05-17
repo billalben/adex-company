@@ -126,3 +126,10 @@ const initAccordion = function (currentAccordion) {
 };
 
 accordions.forEach((accordion) => initAccordion(accordion));
+
+/**
+ * Dynamic copyright year
+ */
+
+const currentYear = new Date().getFullYear();
+document.querySelector(".copyright-year").textContent = currentYear;
