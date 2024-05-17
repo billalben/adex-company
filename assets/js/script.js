@@ -42,3 +42,59 @@ window.addEventListener("scroll", function () {
 
 const navLinks = document.querySelectorAll("[data-nav-link]");
 addEventOnElements(navLinks, "click", toggleNavbar);
+
+/**
+ * SLIDER
+ */
+const sliders = document.querySelectorAll("[data-slider]");
+
+const initSlider = function (currentSlider) {
+  const sliderContainer = currentSlider.querySelector(
+    "[data-slider-container]"
+  );
+  const sliderPrevBtn = currentSlider.querySelector("[data-slider-prev]");
+  const sliderNextBtn = currentSlider.querySelector("[data-slider-next]");
+
+  let currentSlidePos = 0;
+
+  const moveSliderItem = function () {
+    sliderContainer.style.transform = `translateX(-${sliderContainer.children[currentSlidePos].offsetLeft}px)`;
+  };
+
+  /**
+   * NEXT SLIDE
+   */
+
+  const slideNext = function () {
+    const slideEnd = currentSlidePos >= sliderContainer.childElementCount - 1;
+
+    if (slideEnd) currentSlidePos = 0;
+    else currentSlidePos++;
+
+    moveSliderItem();
+  };
+
+  sliderNextBtn.addEventListener("click", slideNext);
+
+  /**
+   * PREVIOUS SLIDE
+   */
+
+  const slidePrev = function () {
+    if (currentSlidePos <= 0)
+      currentSlidePos = sliderContainer.childElementCount - 1;
+    else currentSlidePos--;
+
+    moveSliderItem();
+  };
+
+  sliderPrevBtn.addEventListener("click", slidePrev);
+
+  const dontHaveExtraItem = sliderContainer.childElementCount <= 1;
+  if (dontHaveExtraItem) {
+    sliderNextBtn.style.display = "none";
+    sliderPrevBtn.style.display = "none";
+  }
+};
+
+sliders.forEach((slider) => initSlider(slider));
